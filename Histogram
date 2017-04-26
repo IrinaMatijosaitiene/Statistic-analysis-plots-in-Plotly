@@ -1,0 +1,18 @@
+#histogram for Fresh
+xF = customers['Fresh']
+dataF = [
+    go.Histogram(
+        x=xF,
+        histnorm='probability',
+        xbins=dict(start=np.min(dataF),
+                               size=0.25,
+                               end=np.max(dataF)),
+        marker=dict(color='rgb(25, 25, 100)')
+    )
+]
+layoutF = go.Layout(
+    title="Histogram for Fresh"
+)
+
+figF = go.Figure(data=dataF, layout=layoutF)
+py.iplot(figF, filename='histogramFresh')
