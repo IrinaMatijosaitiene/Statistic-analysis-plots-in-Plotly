@@ -1,0 +1,71 @@
+#grouped box plot for channels
+import plotly.graph_objs as go
+
+trace1 = go.Box(
+    x=customers['Channel'],
+    y=customers['Fresh'],
+    name = 'Fresh',
+    marker = dict(
+        color = '#ff0000'
+    )
+)
+trace2 = go.Box(
+    x=customers['Channel'],
+    y=customers['Milk'],
+    name = 'Milk',
+    marker = dict(
+        color = '#ff8c00'
+    )
+)           
+trace3 = go.Box(
+    x=customers['Channel'],
+    y=customers['Grocery'],
+    name = 'Grocery',
+    marker = dict(
+        color = '#ffff00'
+    )
+)              
+trace4 = go.Box(
+    x=customers['Channel'],
+    y=customers['Frozen'],
+    name = 'Frozen',
+    marker = dict(
+        color = '#3cb371'
+    )
+)   
+trace5 = go.Box(
+    x=customers['Channel'],
+    y=customers['Detergents_Paper'],
+    name = 'Detergents_Paper',
+    marker = dict(
+        color = '#20b2aa'
+    )
+)  
+trace6 = go.Box(
+    x=customers['Channel'],
+    y=customers['Delicassen'],
+    name = 'Delicassen',
+    marker = dict(
+        color = '#4682b4'
+    )
+)   
+layout = go.Layout(
+    title='Customers by Product Group within Channels',
+    width=500,
+    yaxis=dict(
+        title='Customers by Product Group within Channels',
+        zeroline=False
+    )
+)
+
+data = [trace1, trace2, trace3, trace4, trace5, trace6]
+layout = go.Layout(
+    yaxis=dict(
+        title='customers',
+        zeroline=False
+    ),
+    boxmode='group'
+)
+fig = go.Figure(data=data, layout=layout)
+fig['layout'].update(title='Customers by Product Group within Channels')
+py.iplot(fig, filename='GroupedBoxPlot')
