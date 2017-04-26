@@ -1,0 +1,34 @@
+#scatter plot for Fresh&Milk
+from numpy import arange,array,ones
+from scipy import stats
+
+# Generated linear fit
+slope, intercept, r_value, p_value, std_err = stats.linregress(customers['Fresh'],
+                                                               customers['Milk'])
+lineFM = slope*customers['Fresh']+intercept
+
+traceFM = go.Scatter(
+    x = customers['Fresh'],
+    y = customers['Milk'],
+    mode = 'markers',
+    marker=go.Marker(color='rgb(255, 127, 14)')
+)
+
+trace2FM = go.Scatter(
+                  x = customers['Fresh'],
+                y = lineFM,
+                  mode='lines',
+                  marker=go.Marker(color='rgb(31, 119, 180)'),
+                  name='Fit'
+                  )
+
+layoutFM = go.Layout(
+                title='Linear Fit for Fresh & Milk',
+                plot_bgcolor='rgb(229, 229, 229)',
+                  xaxis=go.XAxis(title='Fresh',zerolinecolor='rgb(255,255,255)', gridcolor='rgb(255,255,255)'),
+                  yaxis=go.YAxis(title='Milk',zerolinecolor='rgb(255,255,255)', gridcolor='rgb(255,255,255)')
+                )
+dataFM = [traceFM,trace2FM]
+figFM = go.Figure(data=dataFM, layout=layoutFM)
+
+py.iplot(figFM, filename='scatterFreshMilk')
