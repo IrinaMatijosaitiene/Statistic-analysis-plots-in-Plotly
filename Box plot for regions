@@ -1,0 +1,70 @@
+#grouped box plot for regions
+import plotly.graph_objs as go
+trace1b = go.Box(
+    x=customers['Region'],
+    y=customers['Fresh'],
+    name = 'Fresh',
+    marker = dict(
+        color = '#ff0000'
+    )
+)
+trace2b = go.Box(
+    x=customers['Region'],
+    y=customers['Milk'],
+    name = 'Milk',
+    marker = dict(
+        color = '#ff8c00'
+    )
+)           
+trace3b = go.Box(
+    x=customers['Region'],
+    y=customers['Grocery'],
+    name = 'Grocery',
+    marker = dict(
+        color = '#ffff00'
+    )
+)              
+trace4b = go.Box(
+    x=customers['Region'],
+    y=customers['Frozen'],
+    name = 'Frozen',
+    marker = dict(
+        color = '#3cb371'
+    )
+)   
+trace5b = go.Box(
+    x=customers['Region'],
+    y=customers['Detergents_Paper'],
+    name = 'Detergents_Paper',
+    marker = dict(
+        color = '#20b2aa'
+    )
+)  
+trace6b = go.Box(
+    x=customers['Region'],
+    y=customers['Delicassen'],
+    name = 'Delicassen',
+    marker = dict(
+        color = '#4682b4'
+    )
+)   
+layoutb = go.Layout(
+    title='Customers by Product Group within Regions',
+    width=500,
+    yaxis=dict(
+        title='Customers by Product Group within Regions',
+        zeroline=False
+    )
+)
+
+datab = [trace1b, trace2b, trace3b, trace4b, trace5b, trace6b]
+layoutb = go.Layout(
+    yaxis=dict(
+        title='customers',
+        zeroline=False
+    ),
+    boxmode='group'
+)
+figb = go.Figure(data=datab, layout=layoutb)
+figb['layout'].update(title='Customers by Product Group within Regions')
+py.iplot(figb, filename='GroupedBoxPlot')
