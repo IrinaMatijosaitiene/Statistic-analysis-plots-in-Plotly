@@ -1,0 +1,12 @@
+#counting frequency for channels
+import collections
+channel=customers['Channel']
+counter=collections.Counter(channel)
+print(counter)
+#1 - Horeca, 2 - Retail
+
+#counting frequency for regions
+region=customers['Region']
+counterr=collections.Counter(region)
+print(counterr)
+#1 - Lisbon, 2 - Oporto, 3 - Other Region
